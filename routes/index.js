@@ -10,4 +10,7 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/test', function(req, res, next){
+  console.log('aaaa');
+})
 module.exports = router;
