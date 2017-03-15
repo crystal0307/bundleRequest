@@ -6,3 +6,56 @@ body {
 a {
   color: #00B7FF;
 }
+
+.all {
+    border: 1px black solid;
+    width: 400px;
+}
+
+.part {
+    border: 1px black solid;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.mark {
+    float: left;
+    border: 1px gray solid;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100px;
+    text-align: center;
+}
+
+.content {
+    border: 1px gray solid;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    text-align: center;
+}
+.t{
+        border: 1px gray solid;
+        border-collapse: collapse;
+        border-spacing: 0px;
+        /*table-layout: fixed;*/
+        margin-top: 20px;
+        width: 980px;
+}
+.t td{
+      border: 1px gray solid;
+      padding: 5px;
+      text-align: center;
+      background-color: F1F9F9;
+}
+.t th{
+     border: 1px gray solid;
+     height: 45px;
+     background-color: E3E3E3;
+}
+.todayBtn{
+  margin-left: 500px;
+  float: left;
+}
+.allBtn{
+margin-left: 1200px;
+}

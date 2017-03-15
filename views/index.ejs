@@ -1,14 +1,52 @@
 <html>
 <head>
+  <link href="../stylesheets/style.css" type="text/css" rel="stylesheet"></link>
   <script src="js/jquery-3.1.1.min.js"></script>
   <script>
     $(function(){
-      $("#btnTest").click(function(){
-        alert('f');
+      $("#btnCurrent").click(function(){
           $.ajax({
-            url:"/test",
+            url:"/currDate",
             type:'GET',
             success:function(data){
+              var result = data.list;
+              if(result==""){
+                var cc="";
+                cc +='<tr>'+'<td colspan=6>'+'没有该天数据!'+'</td>'+'</tr>';
+                $('#numbody').html(cc);
+              }else {
+                var htmlStr="";
+                    for(var i=0;i<result.length;i++){
+                      htmlStr +='<tr>'+'<td>'+result[i].applies.name+'</td>'+
+                                '<td>'+result[i].applies.tel+'</td>'+
+                                '<td>'+result[i].applies.province+'</td>'+
+                                '<td>'+result[i].applies.city+'</td>'+
+                                '<td>'+result[i].applies.detail+'</td>'+
+                                '<td>'+result[i].applies.time+'</td>'+'</tr>';
+                      $('#numbody').html(htmlStr);
+                  }
+              }
+
+            }
+          })
+      })
+
+      $("#btnAll").click(function(){
+          $.ajax({
+            url:"/allDate",
+            type:'GET',
+            success:function(data){
+              var resultall = data.listall;
+              var htmlStr2="";
+                for(var i=0;i<resultall.length;i++){
+                  htmlStr2 +='<tr>'+'<td>'+resultall[i].applies.name+'</td>'+
+                             '<td>'+resultall[i].applies.tel+'</td>'+
+                             '<td>'+resultall[i].applies.province+'</td>'+
+                             '<td>'+resultall[i].applies.city+'</td>'+
+                             '<td>'+resultall[i].applies.detail+'</td>'+
+                             '<td>'+resultall[i].applies.time+'</td>'+'</tr>';
+                $('#numbody').html(htmlStr2);
+              }
             }
           })
       })
@@ -16,6 +54,37 @@
   </script>
 </head>
 <body>
-  <input type="button" id="btnTest" value="点击调用"/>
+  <div class="todayBtn">
+    <input type="button" id="btnCurrent" value="当天数据"/>
+  </div>
+  <div class="allBtn">
+    <input type="button" id="btnAll" value="所有数据"/>
+  </div>
+
+<table class="t" align="center">
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>手机</th>
+      <th>所在省</th>
+      <th>所在市</th>
+      <th>详细地址</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody id="numbody">
+    <%for(var i=0;i<datas.length;i++){%>
+    <tr>
+      <td><%=datas[i].applies.name%></td>
+      <td><%=datas[i].applies.tel%></td>
+      <td><%=datas[i].applies.province%></td>
+      <td><%=datas[i].applies.city%></td>
+      <td><%=datas[i].applies.detail%></td>
+      <td><%=datas[i].applies.time%></td>
+    </tr>
+    <%}%>
+  </tbody>
+</table>
 </body>
+
 </html>
