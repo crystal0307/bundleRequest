@@ -54,13 +54,15 @@
   </script>
 </head>
 <body>
-  <div class="todayBtn">
-    <input type="button" id="btnCurrent" value="当天数据" name="numCurrent"/>
-  </div>
-  <div class="allBtn">
-    <input type="button" id="btnAll" value="所有数据" name="numAll"/>
-  </div>
-
+  <div style="width:100%">
+    <div style="width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;">
+    <div>
+        <input type="button" id="btnCurrent" value="当天数据" name="numCurrent"/>
+    </div>
+    <div style="margin-left:100px;">
+        <input type="button" id="btnAll" value="所有数据" name="numAll"/>
+    </div>
+</div>
 <table class="t" align="center">
   <thead>
     <tr>
@@ -85,6 +87,7 @@
     <%}%>
   </tbody>
 </table>
+  </div>
 </body>
 
 </html>
