@@ -8,7 +8,10 @@ router.get('/', function(req, res, next) {
   getData('todayData').then(data =>{
     res.render('index',{datas:data});
   }).catch((error) =>{
-    res.end('系统错误, 请重试！');
+    res.writeHead(200, {
+          "Content-Type": "text/html;charset=utf-8"
+      });//解决中文提示乱码问题
+    res.end('系统错误，请重试!');
   })
 });
 
@@ -16,7 +19,10 @@ router.get('/currDate', function(req, res, next){
   getData('todayData').then(data =>{
      res.json({list:data});
   }).catch((error) =>{
-    res.end('系统错误, 请重试！');
+    res.writeHead(200, {
+          "Content-Type": "text/html;charset=utf-8"
+      });
+    res.end('系统错误，请重试!');
   })
 
 })
@@ -25,7 +31,10 @@ router.get('/allDate', function(req, res, next){
     getData('allDate').then(data =>{
       res.json({listall:data});
     }).catch((error) =>{
-      res.end('系统错误, 请重试！');
+      res.writeHead(200, {
+            "Content-Type": "text/html;charset=utf-8"
+        });
+      res.end('系统错误，请重试!');
     })
 })
 
@@ -33,6 +42,7 @@ function getData(req){
   return new Promise((resolve,reject) =>{
     var bundleSvc = new BundleSvc();
     bundleSvc.getBundles().then(data =>{
+      //throw new Error('niji');
       if(req=='allDate'){
         resolve(data);
       }else if(req=='todayData'){
