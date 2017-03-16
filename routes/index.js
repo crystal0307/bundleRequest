@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   getData('todayData').then(data =>{
     res.render('index',{datas:data});
   }).catch((error) =>{
-    //console.log('3');
+    res.end('系统错误, 请重试！');
   })
 });
 
@@ -16,7 +16,7 @@ router.get('/currDate', function(req, res, next){
   getData('todayData').then(data =>{
      res.json({list:data});
   }).catch((error) =>{
-
+    res.end('系统错误, 请重试！');
   })
 
 })
@@ -25,16 +25,14 @@ router.get('/allDate', function(req, res, next){
     getData('allDate').then(data =>{
       res.json({listall:data});
     }).catch((error) =>{
-
+      res.end('系统错误, 请重试！');
     })
 })
 
 function getData(req){
   return new Promise((resolve,reject) =>{
-    //throw new Error("aaaaaaerr");
     var bundleSvc = new BundleSvc();
     bundleSvc.getBundles().then(data =>{
-      // throw new Error("aaaaaaerr");
       if(req=='allDate'){
         resolve(data);
       }else if(req=='todayData'){
@@ -46,7 +44,6 @@ function getData(req){
         resolve(aData);
       }
     }).catch((err)=>{
-      //console.log('1');
       reject(err);
     })
   }).catch((err)=>{
