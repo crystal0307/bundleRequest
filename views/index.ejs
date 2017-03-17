@@ -94,6 +94,9 @@
     </tr>
   </thead>
   <tbody id="numbody">
+    <%if(datas.length<=0){%>
+       <tr><td colspan=6>没有该天数据!</td></tr>
+       <%}else{%>
     <%for(var i=0;i<datas.length;i++){%>
        <%if(i%2==0){%>
         <tr class="odd">
@@ -113,6 +116,7 @@
       <td><%=datas[i].applies.detail%></td>
       <td><%=datas[i].applies.time%></td>
     </tr>
+    <%}%>
     <%}%>
     <%}%>
   </tbody>
