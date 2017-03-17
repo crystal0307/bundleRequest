@@ -17,12 +17,21 @@
               }else {
                 var htmlStr="";
                     for(var i=0;i<result.length;i++){
-                      htmlStr +='<tr>'+'<td>'+result[i].applies.name+'</td>'+
-                                '<td>'+result[i].applies.tel+'</td>'+
-                                '<td>'+result[i].applies.province+'</td>'+
-                                '<td>'+result[i].applies.city+'</td>'+
-                                '<td>'+result[i].applies.detail+'</td>'+
-                                '<td>'+result[i].applies.time+'</td>'+'</tr>';
+                      if(i%2==0){
+                        htmlStr +='<tr class="odd">'+'<td>'+result[i].applies.name+'</td>'+
+                                  '<td>'+result[i].applies.tel+'</td>'+
+                                  '<td>'+result[i].applies.province+'</td>'+
+                                  '<td>'+result[i].applies.city+'</td>'+
+                                  '<td>'+result[i].applies.detail+'</td>'+
+                                  '<td>'+result[i].applies.time+'</td>'+'</tr>';
+                      }else{
+                        htmlStr +='<tr class="even">'+'<td>'+result[i].applies.name+'</td>'+
+                                  '<td>'+result[i].applies.tel+'</td>'+
+                                  '<td>'+result[i].applies.province+'</td>'+
+                                  '<td>'+result[i].applies.city+'</td>'+
+                                  '<td>'+result[i].applies.detail+'</td>'+
+                                  '<td>'+result[i].applies.time+'</td>'+'</tr>';
+                      }
                       $('#numbody').html(htmlStr);
                   }
               }
@@ -39,12 +48,22 @@
               var resultall = data.listall;
               var htmlStr2="";
                 for(var i=0;i<resultall.length;i++){
-                  htmlStr2 +='<tr>'+'<td>'+resultall[i].applies.name+'</td>'+
-                             '<td>'+resultall[i].applies.tel+'</td>'+
-                             '<td>'+resultall[i].applies.province+'</td>'+
-                             '<td>'+resultall[i].applies.city+'</td>'+
-                             '<td>'+resultall[i].applies.detail+'</td>'+
-                             '<td>'+resultall[i].applies.time+'</td>'+'</tr>';
+                  if(i%2==0){
+                    htmlStr2 +='<tr class="odd">'+'<td>'+resultall[i].applies.name+'</td>'+
+                               '<td>'+resultall[i].applies.tel+'</td>'+
+                               '<td>'+resultall[i].applies.province+'</td>'+
+                               '<td>'+resultall[i].applies.city+'</td>'+
+                               '<td>'+resultall[i].applies.detail+'</td>'+
+                               '<td>'+resultall[i].applies.time+'</td>'+'</tr>';
+                  }else{
+                    htmlStr2 +='<tr class="even">'+'<td>'+resultall[i].applies.name+'</td>'+
+                               '<td>'+resultall[i].applies.tel+'</td>'+
+                               '<td>'+resultall[i].applies.province+'</td>'+
+                               '<td>'+resultall[i].applies.city+'</td>'+
+                               '<td>'+resultall[i].applies.detail+'</td>'+
+                               '<td>'+resultall[i].applies.time+'</td>'+'</tr>';
+                  }
+
                 $('#numbody').html(htmlStr2);
               }
             }
@@ -76,7 +95,17 @@
   </thead>
   <tbody id="numbody">
     <%for(var i=0;i<datas.length;i++){%>
-    <tr>
+       <%if(i%2==0){%>
+        <tr class="odd">
+          <td><%=datas[i].applies.name%></td>
+          <td><%=datas[i].applies.tel%></td>
+          <td><%=datas[i].applies.province%></td>
+          <td><%=datas[i].applies.city%></td>
+          <td><%=datas[i].applies.detail%></td>
+          <td><%=datas[i].applies.time%></td>
+        </tr>
+       <%}else{%>
+    <tr class="even">
       <td><%=datas[i].applies.name%></td>
       <td><%=datas[i].applies.tel%></td>
       <td><%=datas[i].applies.province%></td>
@@ -84,6 +113,7 @@
       <td><%=datas[i].applies.detail%></td>
       <td><%=datas[i].applies.time%></td>
     </tr>
+    <%}%>
     <%}%>
   </tbody>
 </table>

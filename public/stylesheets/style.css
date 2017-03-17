@@ -45,7 +45,13 @@ a {
       border: 1px gray solid;
       padding: 5px;
       text-align: center;
-      background-color: F1F9F9;
+
+}
+tbody tr.odd{
+           background-color: #FFFFFF;
+        }
+tbody tr.even{
+        background-color: #F1F9F9;
 }
 .t th{
      border: 1px gray solid;
