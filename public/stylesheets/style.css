@@ -39,7 +39,7 @@ a {
         border-spacing: 0px;
         /*table-layout: fixed;*/
         margin-top: 20px;
-        /*width: 980px;*/
+        width: 840px;
 }
 .t td{
       border: 1px gray solid;
