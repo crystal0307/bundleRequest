@@ -10,70 +10,186 @@
             type:'GET',
             success:function(data){
               var result = data.list;
-              if(result==""){
-                var cc="";
-                cc +='<tr>'+'<td colspan=6>'+'没有该天数据!'+'</td>'+'</tr>';
-                $('#numbody').html(cc);
-              }else {
-                var htmlStr="";
-                    for(var i=0;i<result.length;i++){
-                      if(i%2==0){
-                        htmlStr +='<tr class="odd">'+'<td>'+result[i].applies.name+'</td>'+
-                                  '<td>'+result[i].applies.tel+'</td>'+
-                                  '<td>'+result[i].applies.province+'</td>'+
-                                  '<td>'+result[i].applies.city+'</td>'+
-                                  '<td>'+result[i].applies.detail+'</td>'+
-                                  '<td>'+result[i].applies.time+'</td>'+'</tr>';
-                      }else{
-                        htmlStr +='<tr class="even">'+'<td>'+result[i].applies.name+'</td>'+
-                                  '<td>'+result[i].applies.tel+'</td>'+
-                                  '<td>'+result[i].applies.province+'</td>'+
-                                  '<td>'+result[i].applies.city+'</td>'+
-                                  '<td>'+result[i].applies.detail+'</td>'+
-                                  '<td>'+result[i].applies.time+'</td>'+'</tr>';
-                      }
-                      $('#numbody').html(htmlStr);
-                  }
+              if(data.flag=="order"){
+                var bundleTable=document.getElementById("bundleTable");
+                bundleTable.style.display="none";
+                var orderTable=document.getElementById("orderTable");
+                orderTable.style.display="block";
+                if(result==""){
+                  var cc="";
+                  cc +='<tr>'+'<td colspan=9>'+'没有该天订单数据!'+'</td>'+'</tr>';
+                  $('#orderbody').html(cc);
+                }else {
+                  makeOrderData(result);
+                }
+              }else{
+                var bundleTable=document.getElementById("bundleTable");
+                bundleTable.style.display="block";
+                var orderTable=document.getElementById("orderTable");
+                orderTable.style.display="none";
+                if(result==""){
+                  var cc="";
+                  cc +='<tr>'+'<td colspan=6>'+'没有该天礼包数据!'+'</td>'+'</tr>';
+                  $('#numbody').html(cc);
+                }else {
+                  makeData(result);
+                }
               }
-
             }
           })
       })
-
       $("#btnAll").click(function(){
           $.ajax({
             url:"/allDate",
             type:'GET',
             success:function(data){
               var resultall = data.listall;
-              var htmlStr2="";
-                for(var i=0;i<resultall.length;i++){
-                  if(i%2==0){
-                    htmlStr2 +='<tr class="odd">'+'<td>'+resultall[i].applies.name+'</td>'+
-                               '<td>'+resultall[i].applies.tel+'</td>'+
-                               '<td>'+resultall[i].applies.province+'</td>'+
-                               '<td>'+resultall[i].applies.city+'</td>'+
-                               '<td>'+resultall[i].applies.detail+'</td>'+
-                               '<td>'+resultall[i].applies.time+'</td>'+'</tr>';
-                  }else{
-                    htmlStr2 +='<tr class="even">'+'<td>'+resultall[i].applies.name+'</td>'+
-                               '<td>'+resultall[i].applies.tel+'</td>'+
-                               '<td>'+resultall[i].applies.province+'</td>'+
-                               '<td>'+resultall[i].applies.city+'</td>'+
-                               '<td>'+resultall[i].applies.detail+'</td>'+
-                               '<td>'+resultall[i].applies.time+'</td>'+'</tr>';
-                  }
-
-                $('#numbody').html(htmlStr2);
+              if(data.flag=="order"){
+                var bundleTable=document.getElementById("bundleTable");
+                bundleTable.style.display="none";
+                var orderTable=document.getElementById("orderTable");
+                orderTable.style.display="block";
+                if(resultall==""){
+                  var cc="";
+                  cc +='<tr>'+'<td colspan=9>'+'没有订单数据!'+'</td>'+'</tr>';
+                  $('#orderbody').html(cc);
+                }else {
+                  makeOrderData(resultall);
+                }
+              }else{
+                var bundleTable=document.getElementById("bundleTable");
+                bundleTable.style.display="block";
+                var orderTable=document.getElementById("orderTable");
+                orderTable.style.display="none";
+                if(resultall==""){
+                  var cc="";
+                  cc +='<tr>'+'<td colspan=6>'+'没有礼包数据!'+'</td>'+'</tr>';
+                  $('#numbody').html(cc);
+                }else {
+                  makeData(resultall);
+                }
               }
             }
           })
       })
+      $("#btnOrder").click(function(){
+         makeOrderStyle();
+        // $("#btnOrder").style.backgroundColor = "#387ef5";
+        var bundleTable=document.getElementById("bundleTable");
+        bundleTable.style.display="none";
+        var orderTable=document.getElementById("orderTable");
+        orderTable.style.display="block";
+        $.ajax({
+          url:"/currDate",
+          type:'GET',
+          data:{val:"Order"},
+          success:function(data){
+            var orderNum=data.list;
+            if(orderNum==""){
+              var cc="";
+              cc +='<tr>'+'<td colspan=9>'+'没有该天订单数据!'+'</td>'+'</tr>';
+              $('#orderbody').html(cc);
+            }else {
+              makeOrderData(orderNum);
+            }
+
+          }
+        })
+
+      })
+      $("#btnBundle").click(function(){
+        makeBundleStyle();
+        var bundleTable=document.getElementById("bundleTable");
+        bundleTable.style.display="block";
+        var orderTable=document.getElementById("orderTable");
+        orderTable.style.display="none";
+        $.ajax({
+          url:"/currDate",
+          type:'GET',
+          data:{val:"Bundle"},
+          success:function(data){
+            var result = data.list;
+            if(result==""){
+              var cc="";
+              cc +='<tr>'+'<td colspan=6>'+'没有该天礼包数据!'+'</td>'+'</tr>';
+              $('#numbody').html(cc);
+            }else {
+              makeData(result);
+            }
+
+          }
+        })
+      })
+
+      function makeData(result){
+        var htmlStr="";
+            for(var i=0;i<result.length;i++){
+              if(i%2==0){
+                htmlStr +='<tr class="odd">'+'<td>'+result[i].applies.name+'</td>'+
+                          '<td>'+result[i].applies.tel+'</td>'+
+                          '<td>'+result[i].applies.province+'</td>'+
+                          '<td>'+result[i].applies.city+'</td>'+
+                          '<td>'+result[i].applies.detail+'</td>'+
+                          '<td>'+result[i].applies.time+'</td>'+'</tr>';
+              }else{
+                htmlStr +='<tr class="even">'+'<td>'+result[i].applies.name+'</td>'+
+                          '<td>'+result[i].applies.tel+'</td>'+
+                          '<td>'+result[i].applies.province+'</td>'+
+                          '<td>'+result[i].applies.city+'</td>'+
+                          '<td>'+result[i].applies.detail+'</td>'+
+                          '<td>'+result[i].applies.time+'</td>'+'</tr>';
+              }
+              $('#numbody').html(htmlStr);
+          }
+      }
+      function makeOrderData(orderNum){
+        var htmlStrOrder="";
+        for(var i=0;i<orderNum.length;i++){
+          if(i%2==0){
+            htmlStrOrder +='<tr class="odd">'+'<td>'+orderNum[i].name+'</td>'+
+                       '<td>'+orderNum[i].tel+'</td>'+
+                       '<td>'+orderNum[i].province+'</td>'+
+                       '<td>'+orderNum[i].city+'</td>'+
+                       '<td>'+orderNum[i].detail+'</td>'+
+                       '<td>'+orderNum[i].itemName+'</td>'+
+                       '<td>'+orderNum[i].quantity+'</td>'+
+                       '<td>'+orderNum[i].status+'</td>'+
+                       '<td>'+orderNum[i].created+'</td>'+'</tr>';
+          }else{
+            htmlStrOrder +='<tr class="even">'+'<td>'+orderNum[i].name+'</td>'+
+                       '<td>'+orderNum[i].tel+'</td>'+
+                       '<td>'+orderNum[i].province+'</td>'+
+                       '<td>'+orderNum[i].city+'</td>'+
+                       '<td>'+orderNum[i].detail+'</td>'+
+                       '<td>'+orderNum[i].itemName+'</td>'+
+                       '<td>'+orderNum[i].quantity+'</td>'+
+                       '<td>'+orderNum[i].status+'</td>'+
+                       '<td>'+orderNum[i].created+'</td>'+'</tr>';
+          }
+        $('#orderbody').html(htmlStrOrder);
+      }
+      }
+      function makeOrderStyle(){
+        $("#btnOrder").css({"backgroundColor":"#387ef5","color":"#FFFFFF"});
+        $("#btnBundle").css({"backgroundColor":"#FFFFFF","color":"#387ef5"});
+      }
+      function makeBundleStyle(){
+        $("#btnBundle").css({"backgroundColor":"#387ef5","color":"#FFFFFF"});
+        $("#btnOrder").css({"backgroundColor":"#FFFFFF","color":"#387ef5"});
+      }
     })
   </script>
 </head>
 <body>
   <div style="width:100%">
+    <div style="width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;margin-bottom:20px">
+      <div>
+        <input type="button" id="btnBundle" value="礼包列表" class="btnbundle"/>
+      </div>
+      <div>
+        <input type="button" id="btnOrder" value="订单列表" class="btnorder"/>
+      </div>
+    </div>
     <div style="width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;">
     <div>
         <input type="button" id="btnCurrent" value="当天数据" name="numCurrent"/>
@@ -82,15 +198,15 @@
         <input type="button" id="btnAll" value="所有数据" name="numAll"/>
     </div>
 </div>
-<table class="t" align="center">
+<table class="t" align="center" id="bundleTable">
   <thead>
     <tr>
-      <th>姓名</th>
-      <th>手机</th>
-      <th>所在省</th>
-      <th>所在市</th>
-      <th>详细地址</th>
-      <th>日期</th>
+      <th style="width:100px">姓名</th>
+      <th style="width:150px">手机</th>
+      <th style="width:80px">所在省</th>
+      <th style="width:100px">所在市</th>
+      <th style="width:300px">详细地址</th>
+      <th style="width:270px">日期</th>
     </tr>
   </thead>
   <tbody id="numbody">
@@ -119,6 +235,24 @@
     <%}%>
     <%}%>
     <%}%>
+  </tbody>
+</table>
+
+<table class="t" align="center" style="display:none" id="orderTable">
+  <thead>
+    <tr>
+      <th style="width:70px">姓名</th>
+      <th style="width:120px">手机</th>
+      <th style="width:70px">所在省</th>
+      <th style="width:80px">所在市</th>
+      <th style="width:240px">详细地址</th>
+      <th style="width:130px">商品名称</th>
+      <th style="width:80px">订单数量</th>
+      <th style="width:80px">订单状态</th>
+      <th style="width:130px">日期</th>
+    </tr>
+  </thead>
+  <tbody id="orderbody">
   </tbody>
 </table>
   </div>

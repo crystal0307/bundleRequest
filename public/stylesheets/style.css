@@ -39,7 +39,7 @@ a {
         border-spacing: 0px;
         /*table-layout: fixed;*/
         margin-top: 20px;
-        width: 900px;
+        width: 1000px;
 }
 .t td{
       border: 1px gray solid;
@@ -65,3 +65,36 @@ tbody tr.even{
 .allBtn{
 margin-left: 1200px;
 }
+.btnbundle{
+  font-size: 9pt;
+    color: #FFFFFF;
+    border-bottom: #387ef5 1px solid;
+    border-left: #387ef5 1px solid;
+    border-right: #387ef5 1px solid;
+    border-top: #387ef5 1px solid;
+    border-radius: 6px 0 0 6px;
+    background-color: #387ef5;
+    cursor: hand;
+    font-style: normal;
+    width: 98px;
+    height: 35px;
+}
+.btnorder{
+  font-size: 9pt;
+    color: #387ef5;
+    border-bottom: #387ef5 1px solid;
+    border-left: #387ef5 1px solid;
+    border-right: #387ef5 1px solid;
+    border-top: #387ef5 1px solid;
+    border-radius: 0 6px 6px 0;
+    background-color: #FFFFFF;
+    cursor: hand;
+    font-style: normal;
+    width: 98px;
+    height: 35px;
+}
+/*.btnbundle:pressed
+{
+    color: #FFFFFF;
+    background-color: #387ef5;
+}*/
