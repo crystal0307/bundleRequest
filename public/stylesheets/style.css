@@ -51,19 +51,24 @@ tbody tr.odd{
            background-color: #FFFFFF;
         }
 tbody tr.even{
-        background-color: #F1F9F9;
+        background-color: #ECF2FE;
+        /*F1F9F9*/
 }
 .t th{
      border: 1px gray solid;
      height: 45px;
-     background-color: E3E3E3;
+     background-color: #E3E3E3;
 }
-.todayBtn{
-  margin-left: 500px;
-  float: left;
-}
-.allBtn{
-margin-left: 1200px;
+.dataBtn{
+  font-size: 1pt;
+    border-bottom: gray 1px solid;
+    border-left: gray 1px solid;
+    border-right: gray 1px solid;
+    border-top: gray 1px solid;
+    border-radius: 3px 3px 3px 3px;
+    font-style: normal;
+    width: 60px;
+    height: 25px;
 }
 .btnbundle{
   font-size: 9pt;

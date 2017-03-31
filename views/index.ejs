@@ -153,7 +153,7 @@
                        '<td>'+orderNum[i].detail+'</td>'+
                        '<td>'+orderNum[i].itemName+'</td>'+
                        '<td>'+orderNum[i].quantity+'</td>'+
-                       '<td>'+orderNum[i].status+'</td>'+
+                       '<td>'+(orderNum[i].status == 0 ? "未付款" : "已付款")+'</td>'+
                        '<td>'+orderNum[i].created+'</td>'+'</tr>';
           }else{
             htmlStrOrder +='<tr class="even">'+'<td>'+orderNum[i].name+'</td>'+
@@ -163,7 +163,7 @@
                        '<td>'+orderNum[i].detail+'</td>'+
                        '<td>'+orderNum[i].itemName+'</td>'+
                        '<td>'+orderNum[i].quantity+'</td>'+
-                       '<td>'+orderNum[i].status+'</td>'+
+                       '<td>'+(orderNum[i].status == 0 ? "未付款" : "已付款")+'</td>'+
                        '<td>'+orderNum[i].created+'</td>'+'</tr>';
           }
         $('#orderbody').html(htmlStrOrder);
@@ -192,10 +192,10 @@
     </div>
     <div style="width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;">
     <div>
-        <input type="button" id="btnCurrent" value="当天数据" name="numCurrent"/>
+        <input type="button" id="btnCurrent" value="当天数据" name="numCurrent" class="dataBtn"/>
     </div>
     <div style="margin-left:100px;">
-        <input type="button" id="btnAll" value="所有数据" name="numAll"/>
+        <input type="button" id="btnAll" value="所有数据" name="numAll" class="dataBtn"/>
     </div>
 </div>
 <table class="t" align="center" id="bundleTable">
