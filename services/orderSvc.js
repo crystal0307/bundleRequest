@@ -30,7 +30,8 @@ OrderSvc.prototype.getOrders=function(){
           //  resList.push(order);
          })
        })
-       resolve(resList);
+        resList = _.orderBy(resList,["created"],['desc'])
+        resolve(resList);
      })
     }).catch(err =>{
       reject(err);
