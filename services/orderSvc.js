@@ -27,10 +27,10 @@ OrderSvc.prototype.getOrders=function(){
          _.forEach(data,(order)=>{
            var name=item.name;
            resList.push({"itemName":name,"quantity":order.quantity,"created":order.created,"province":order.address.province,"city":order.address.city,"detail":order.address.detail,"tel":order.address.tel,"name":order.address.name,"status":order.status});
-          //  resList.push(order);
          })
        })
-       resolve(resList);
+       var l=_.orderBy(resList,['created'],['desc']);
+       resolve(l);
      })
     }).catch(err =>{
       reject(err);

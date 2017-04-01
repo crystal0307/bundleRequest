@@ -153,7 +153,7 @@
                        '<td>'+orderNum[i].detail+'</td>'+
                        '<td>'+orderNum[i].itemName+'</td>'+
                        '<td>'+orderNum[i].quantity+'</td>'+
-                       '<td>'+(orderNum[i].status == 0 ? "未付款" : "已付款")+'</td>'+
+                       '<td>'+(orderNum[i].status == 0 ? '<span style="color:red">未付款</span>' : '<span style="color:green">已付款</span>')+'</td>'+
                        '<td>'+orderNum[i].created+'</td>'+'</tr>';
           }else{
             htmlStrOrder +='<tr class="even">'+'<td>'+orderNum[i].name+'</td>'+
@@ -163,12 +163,13 @@
                        '<td>'+orderNum[i].detail+'</td>'+
                        '<td>'+orderNum[i].itemName+'</td>'+
                        '<td>'+orderNum[i].quantity+'</td>'+
-                       '<td>'+(orderNum[i].status == 0 ? "未付款" : "已付款")+'</td>'+
+                       '<td>'+(orderNum[i].status == 0 ? '<span style="color:red">未付款</span>' : '<span style="color:green">已付款</span>')+'</td>'+
                        '<td>'+orderNum[i].created+'</td>'+'</tr>';
           }
         $('#orderbody').html(htmlStrOrder);
       }
-      }
+    }
+
       function makeOrderStyle(){
         $("#btnOrder").css({"backgroundColor":"#387ef5","color":"#FFFFFF"});
         $("#btnBundle").css({"backgroundColor":"#FFFFFF","color":"#387ef5"});
