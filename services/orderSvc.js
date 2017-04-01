@@ -29,8 +29,13 @@ OrderSvc.prototype.getOrders=function(){
            resList.push({"itemName":name,"quantity":order.quantity,"created":order.created,"province":order.address.province,"city":order.address.city,"detail":order.address.detail,"tel":order.address.tel,"name":order.address.name,"status":order.status});
          })
        })
+<<<<<<< HEAD
        var l=_.orderBy(resList,['created'],['desc']);
        resolve(l);
+=======
+        resList = _.orderBy(resList,["created"],['desc'])
+        resolve(resList);
+>>>>>>> master
      })
     }).catch(err =>{
       reject(err);
