@@ -32,6 +32,7 @@ var userSchema = new Schema({
             tel: String,
             detail: String,
             name: String,
+            result: String,
             time: {
                 type: String,
                 default: () => {
