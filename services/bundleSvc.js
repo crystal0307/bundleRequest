@@ -17,9 +17,8 @@ BundleSvc.prototype.updateLottery = function(bundleId, hits) {
                                 return ii === y.name;
                             })) {
                             y.result = '申领成功';
-                            console.log('hit' + y.name);
                         } else {
-                            y.reuslt = '10元一键购商城代金券'
+                            y.result = '10元一键购商城代金券'
                         }
                     }
                 });
