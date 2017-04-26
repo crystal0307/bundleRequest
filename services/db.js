@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = Promise;
 // Build the connection string
-var dbURI = 'mongodb://root:shyr021191@172.20.70.231:27017/babydate';
+var dbURI = 'mongodb://root:shyr021191$@222.73.7.150:27017/babydate';
 
 // Create the database connection
 mongoose.connect(dbURI);
