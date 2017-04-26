@@ -11,16 +11,15 @@ router.get('/', function(req, res, next) {
 
 function getUsers(){
 
+  var userSvc = new UserSvc();
+  userSvc.updateUser().then(data => {
+
+  })
+
   setInterval(() => {
     var userSvc = new UserSvc();
     userSvc.updateUser().then(data => {
-      //if(data == "OK")
-      //{
-      //  console.log("update success");
-      //}
-      //else{
-      //  console.log(data);
-      //}
+
     })
   }, 1000*60*60)
 

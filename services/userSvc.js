@@ -18,11 +18,21 @@ UserSvc.prototype.updateUser = function(){
         WUser.find().then((data) => {
             _.forEach(data, (u) => {
                 api.getUser(u.openId, (err, res) => {
-                //console.log(res.openid);
-                WUser.findOneAndUpdate({'openId':res.openid},{'nick':res.nickname, 'unionId':res.unionid},(err,res) => {
-                    console.log(err);
-                    console.log(res);
-                });
+                    if(res && res.openid){
+                            WUser.findOneAndUpdate({'openId':res.openid},{'nick':res.nickname, 'unionId':res.unionid},(err,res) => {
+                                if(err){
+                                    console.log("ERROR:");
+                                    console.log(res);
+                                }
+                                else{
+                                    console.log("SUCCESS!")
+                            }
+                        });
+                    }
+                    else{
+                        console.log("no openid");
+                        console.log(res);
+                    }
                 })
             })
         })
