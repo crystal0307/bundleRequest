@@ -1,0 +1,49 @@
+module.exports.Events = [{
+  id: 1,
+  title: '确认怀孕计算预产期',
+  week: 6
+}, {
+  id: 2,
+  title: '选择／查看生产医院',
+  week: 8
+}, {
+  id: 3,
+  title: '社区医院建小卡',
+  date: 9
+}, {
+  id: 4,
+  title: '医院建大卡产检',
+  week: 11
+}, {
+  id: 5,
+  title: '关键产检：唐氏筛查',
+  week: 11
+}, {
+  id: 6,
+  title: '关键产检：大排畸',
+  week: 20
+}, {
+  id: 7,
+  title: '关键产检：糖耐量',
+  date: 22
+}, {
+  id: 8,
+  title: '选择月子中心',
+  week: 25
+}, {
+  id: 9,
+  title: '关键产检：胎心监护',
+  week: 32
+}, {
+  id: 10,
+  title: '购买准备待产包',
+  week: 35
+}, {
+  id: 11,
+  title: '入院前准备',
+  week: 36
+}, {
+  id: 12,
+  title: '生产攻略',
+  week: 37
+}]
