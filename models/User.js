@@ -58,7 +58,8 @@ var userSchema = new Schema({
             _id: false
         }
     ],
-    modals: [String]
+    modals: [String],
+    reminders: [Number]
 }, {versionKey: false});
 
 var User = mongoose.model('User', userSchema);
