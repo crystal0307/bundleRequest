@@ -12,7 +12,9 @@ var _ = require("lodash");
 const Events = require('./events.js');
 
 var UserSvc = function() {
-
+  api.setOpts({
+    timeout: 30 * 1000
+  });
 }
 
 UserSvc.prototype.getRes = function() {
