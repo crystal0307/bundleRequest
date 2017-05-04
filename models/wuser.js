@@ -6,6 +6,10 @@ var wuserSchema = new Schema({
     nick: String,
     openId: String,
     unionId: String,
+    status: {
+        type: Boolean,
+        default: true
+    },
     created: {
         type: String,
         default: () => {

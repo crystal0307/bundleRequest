@@ -47,22 +47,26 @@ UserSvc.prototype.updateUser = function() {
   return new Promise((resolve, reject) => {
     WUser.find().then((data) => {
       _.forEach(data, (u) => {
-        api.getUser(u.openId, (err, res) => {
-          if (res && res.openid) {
-            WUser.findOneAndUpdate({
-              'openId': res.openid
-            }, {
-              'nick': res.nickname,
-              'unionId': res.unionid
-            }, (err, res) => {
-              if (err) {
+       if(u.status != false)
+        {
+            api.getUser(u.openId, (err, res) => {
+              if (res && res.openid) {
+                console.log(res.nickname);
+                WUser.findOneAndUpdate({
+                  'openId': res.openid
+                }, {
+                  'nick': res.nickname,
+                  'unionId': res.unionid
+                }, (err, res) => {
+                  if (err) {
+                    console.log(err);
+                  }
+                });
+              } else {
                 console.log(err);
               }
-            });
-          } else {
-            console.log(err);
-          }
-        })
+            })
+        }
       })
     })
   })
