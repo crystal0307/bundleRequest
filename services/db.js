@@ -17,10 +17,10 @@ mongoose.connect(dbURI);
 // When successfully connected
 mongoose.connection.on('connected', function() {
   console.log('Mongoose default connection open to ' + dbURI);
-  getUsers();
-  var a = schedule.scheduleJob('30 * * * *', function() {
-    getUsers();
-  });
+  //getUsers();
+  //var a = schedule.scheduleJob('30 * * * *', function() {
+  //  getUsers();
+  //});
   //userSvc.getWeeks('2017-11-26').then(data => {
   //    console.log(data);
   //})
