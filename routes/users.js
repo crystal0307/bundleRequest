@@ -4,25 +4,27 @@ const UserSvc=require('../services/userSvc.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  getUsers();
+  //getUsers();
+  //getW();
   res.render('user');
 });
 
 
 function getUsers(){
 
+  //var userSvc = new UserSvc();
+  //userSvc.updateUser().then(data => {
+  //
+  //})
+  //
+
+}
+
+function getW(){
   var userSvc = new UserSvc();
-  userSvc.updateUser().then(data => {
-
+  userSvc.getWeeks('2017-10-01').then(data => {
+    console.log(data);
   })
-
-  setInterval(() => {
-    var userSvc = new UserSvc();
-    userSvc.updateUser().then(data => {
-
-    })
-  }, 1000*60*60)
-
 }
 
 module.exports = router;

@@ -9,7 +9,7 @@ module.exports.Events = [{
 }, {
   id: 3,
   title: '社区医院建小卡',
-  date: 9
+  week: 9
 }, {
   id: 4,
   title: '医院建大卡产检',
@@ -25,7 +25,7 @@ module.exports.Events = [{
 }, {
   id: 7,
   title: '关键产检：糖耐量',
-  date: 22
+  week: 22
 }, {
   id: 8,
   title: '选择月子中心',
