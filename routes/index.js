@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/lottery/:id', function(req, res, next) {
     var bundleSvc = new BundleSvc();
-    bundleSvc.updateLottery(req.params.id, ['张露露', '唐新玉', '凌佳懿', '王菲', '陈瑜']).then(() => {
+    bundleSvc.updateLottery(req.params.id, ['朱和燕', '汤东玲', '杨洁瑾', '戴丽榕', '叶乃利']).then(() => {
         res.json({
             res: 'success'
         });
